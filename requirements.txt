@@ -1,0 +1,8 @@
+python-dotenv
+streamlit
+plotly
+openpyxl
+ortools
+pydantic
+numpy
+

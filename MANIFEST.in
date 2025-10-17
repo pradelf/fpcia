@@ -1,0 +1,4 @@
+# `-> matches file paths relative to the root of the project
+
+global-exclude *~ *.py[cod] *.so
+# `-> matches file names (regardless of directory)

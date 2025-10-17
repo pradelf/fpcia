@@ -1,0 +1,29 @@
+[build-system]
+requires = ['setuptools>=61.0']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = "fpcia"
+
+version = "0.0.1"
+requires-python = ">=3.10"
+
+description = "This is a standalone Python library which contains code for  working with various AI library."
+authors = [
+    { name = "Francis Pradel", email = "francis.pradel@faactopi.com" },
+]
+
+dependencies = ["pandas", "plotly", "numpy", "ortools", "pydantic", "streamlit", ]
+license = "LicenseRef-MIT"
+license-files = ["LICEN[CS]E*"]
+keywords = ["algorithm", "EDA", "AI", "data"]
+
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+fpcia = ["*.xlsx"]
