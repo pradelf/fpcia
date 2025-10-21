@@ -1,0 +1,9 @@
+city,department,region,population,area_km2,lat,lon
+Paris,75,Île-de-France,2148000,105.4,48.8566,2.3522
+Lyon,69,Auvergne-Rhône-Alpes,515695,47.87,45.7640,4.8357
+Marseille,13,Provence-Alpes-Côte d'Azur,861635,240.62,43.2965,5.3698
+Nice,06,Provence-Alpes-Côte d'Azur,342637,71.92,43.7102,7.2620
+Nantes,44,Pays de la Loire,306694,65.19,47.2184,-1.5536
+Bordeaux,33,Nouvelle-Aquitaine,254436,49.36,44.8378,-0.5792
+Strasbourg,67,Grand Est,284677,78.26,48.5734,7.7521
+Lille,59,Hauts-de-France,232787,34.83,50.6292,3.0573
