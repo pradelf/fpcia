@@ -30,8 +30,16 @@ license = "LicenseRef-MIT"
 license-files = ["LICEN[CS]E*"]
 keywords = ["algorithm", "EDA", "AI", "data"]
 
-[project.optional-dependencies]
-test = ["pytest"]
+[dependency-groups]
+test = ["pytest>=7.0.0", "pytest-cov>=4.0.0"]
+lint = ["ruff>=0.1.0", "mypy>=1.0.0"]
+dev = ["fpcia[test,lint]"]
+
+# pyproject.toml
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

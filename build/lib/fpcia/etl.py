@@ -275,3 +275,34 @@
 # df = pd.read_sql_query(con=engine.connect(), sql=stmt)
 
 # df.head()
+from sklearn.cluster import DBSCAN
+from geopy.distance import great_circle
+from shapely.geometry import MultiPoint
+from pandas import DataFrame
+
+# Function for Expanding DateTime to separate columns taht can be used for other data
+
+
+def expand_date(df: DataFrame, datename: str) -> DataFrame:
+    """Expand Date/Time column into separate columns for date components."""
+    df["date"] = df[datename].dt.date
+    df["month"] = df[datename].dt.month
+    df["week"] = df[datename].dt.isocalendar().week
+    df["MonthDayNum"] = df[datename].dt.day
+    df["HourOfDay"] = df[datename].dt.hour
+    df["DayOfWeekNum"] = df[datename].dt.dayofweek  # Monday=0, Sunday=6.
+    df["DayOfWeek"] = df[datename].dt.day_name()
+    return df
+
+
+def detect_outliers_iqr(data: DataFrame, column: str) -> DataFrame:
+    """Detect outliers in a DataFrame column using the IQR method."""
+    Q1 = data[column].quantile(0.25)
+    Q3 = data[column].quantile(0.75)
+    IQR = Q3 - Q1
+
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+
+    outliers = data[(data[column] < lower_bound) | (data[column] > upper_bound)]
+    return outliers

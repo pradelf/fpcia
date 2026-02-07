@@ -2,6 +2,7 @@ from .constants import *
 from .data import MyPandaDataset
 from .eda import *
 from .etl import *
+from .look import *
 from .utils import *
 
 __all__ = [
