@@ -12,7 +12,7 @@ class MyPandaDataset(BaseModel):
         self.data = pd.read_csv(self.filepath)
         return self.data
 
-    def summary(self):
+    def print_summary(self):
         """Print a summary of the dataset."""
         print("________________________________________________")
         print("Data Start")

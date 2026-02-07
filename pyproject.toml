@@ -5,7 +5,7 @@ build-backend = 'setuptools.build_meta'
 
 [project]
 name = "fpcia"
-version = "0.0.2"
+version = "0.0.3"
 #dynamic = ["version"]
 requires-python = ">=3.12"
 
@@ -25,6 +25,7 @@ dependencies = [
     "python-dotenv",
     "scikit-learn",
     "streamlit",
+    "shapely",
 ]
 license = "LicenseRef-MIT"
 license-files = ["LICEN[CS]E*"]
@@ -34,12 +35,6 @@ keywords = ["algorithm", "EDA", "AI", "data"]
 test = ["pytest>=7.0.0", "pytest-cov>=4.0.0"]
 lint = ["ruff>=0.1.0", "mypy>=1.0.0"]
 dev = ["fpcia[test,lint]"]
-
-# pyproject.toml
-[tool.pytest.ini_options]
-minversion = "6.0"
-addopts = "-ra -q"
-testpaths = ["tests"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

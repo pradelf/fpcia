@@ -13,12 +13,6 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
-logger = logging.getLogger(__name__)
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
-
 
 def haversine_distance(lat1, lon1, lat2, lon2):
     """Calculate the Haversine distance between two points on the Earth."""

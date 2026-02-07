@@ -1,9 +1,11 @@
 import datetime
+import logging
 import math
-from datetime import time
 
 import pandas as pd
 import pytest
+
+from fpcia import eda
 from fpcia.data import MyPandaDataset
 
 
@@ -97,7 +99,7 @@ def create_a_good_test_dataset():
 
 @pytest.fixture
 def create_a_bad_test_dataset():
-    """Create a test dataset instance"""
+    """Create a bad test dataset instance with null values"""
     df = pd.DataFrame(
         [
             {
@@ -189,7 +191,6 @@ def test_how_null_is_not_null(create_a_good_test_dataset):
 
     result = how_null_is_it(create_a_good_test_dataset)
     assert "Overall missing values in dataset : 0" in result
-    assert "missing values in dataset per column :" in result
     assert "city" in result
     assert "department" in result
     assert "region" in result
@@ -203,8 +204,8 @@ def test_how_null_is_null(create_a_bad_test_dataset):
     from fpcia.eda import how_null_is_it
 
     result = how_null_is_it(create_a_bad_test_dataset)
-    assert "Overall missing values in dataset : 0" in result
-    assert "missing values in dataset per column :" in result
+    print(result)
+    assert "Overall missing values in dataset : 1" in result
     assert "city" in result
     assert "department" in result
     assert "region" in result
@@ -214,23 +215,20 @@ def test_how_null_is_null(create_a_bad_test_dataset):
     assert "lon" in result
 
 
-def test_hello_successfully(create_a_good_test_dataset):
-    """Check if test framework works with library"""
+def test_eda_successfully(create_a_good_test_dataset):
+    """Check if eda framework works with library"""
 
     # GIVEN
-    texte = "Hello"
-    world = "World"
+    df = create_a_good_test_dataset
     # WHEN
-    result = f"{texte} {world}!"
-
+    summary = eda.summary(df)
+    logging.getLogger().info(summary)
+    shape = eda.inShape(df)
     # THEN
-    assert result == "Hello World!"
-    assert isinstance(result, str)
-    assert len(result) == 12
-    assert "World" in result
-    assert isinstance(create_a_test_dataset, pd.DataFrame)
-    assert create_a_test_dataset.shape == (8, 7)
-    assert list(create_a_test_dataset.columns) == [
+    assert "0       Paris         75               Île-de-France" in summary
+    assert isinstance(create_a_good_test_dataset, pd.DataFrame)
+    assert "The shape of the dataset is: (8, 7)" in shape
+    assert list(create_a_good_test_dataset.columns) == [
         "city",
         "department",
         "region",

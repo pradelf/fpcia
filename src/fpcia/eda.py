@@ -51,14 +51,9 @@ def score_model(model, x_train, y_train, x_test, y_test):
 
 def how_null_is_it(df: pd.DataFrame) -> str:  # noqa: F811
     """Print missing values in the dataset."""
-    print()
-    print(f"Overall missing values in dataset : {df.isnull().sum().sum()}")
-    print()
-    print("missing values in dataset per column :")
-    print(df.isnull().sum())
-    print()
-
-
-def score_model(model, x_train, y_train, x_test, y_test):
-    print(model.score(x_train, y_train))
-    print(model.score(x_test, y_test))
+    chaine = f"""________________________________________________
+            Overall missing values in dataset : {df.isnull().sum().sum()}
+            missing values in dataset per column 
+            {df.isnull().sum()}
+            ________________________________________________"""
+    return chaine
