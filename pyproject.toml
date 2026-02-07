@@ -6,7 +6,6 @@ build-backend = 'setuptools.build_meta'
 [project]
 name = "fpcia"
 dynamic = ["version"]
-#version = "0.0.1"
 requires-python = ">=3.12"
 
 description = "This is a standalone Python library which contains code for  working with various AI library."
@@ -16,15 +15,15 @@ authors = [{ name = "Francis Pradel", email = "francis.pradel@gmail.com" }]
 maintainers = [{ name = "Francis Pradel", email = "francis.pradel@gmail.com" }]
 
 dependencies = [
-    "geopy==2.4.1",
-    "numpy==2.2.5",
-    "pandas==2.2.3",
-    "plotly==6.1.2",
-    "plotly-express==0.4.1",
-    "pydantic==2.10.1",
+    "geopy",
+    "numpy",
+    "pandas",
+    "plotly",
+    "plotly-express",
+    "pydantic",
     "python-dotenv",
-    "scikit-learn==1.7",
-    "streamlit==1.50.0",
+    "scikit-learn",
+    "streamlit",
 ]
 license = "LicenseRef-MIT"
 license-files = ["LICEN[CS]E*"]
