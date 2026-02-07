@@ -7,6 +7,8 @@ src/fpcia/constants.py
 src/fpcia/data.py
 src/fpcia/eda.py
 src/fpcia/etl.py
+src/fpcia/look.py
+src/fpcia/unsupervised.py
 src/fpcia/utils.py
 src/fpcia.egg-info/PKG-INFO
 src/fpcia.egg-info/SOURCES.txt

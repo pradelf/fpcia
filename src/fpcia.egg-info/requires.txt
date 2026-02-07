@@ -1,7 +1,11 @@
+geopy
+numpy
 pandas
 plotly
-numpy
+plotly-express
 pydantic
+python-dotenv
+scikit-learn
 streamlit
 
 [test]

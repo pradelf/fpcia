@@ -1,17 +1,66 @@
 Metadata-Version: 2.4
 Name: fpcia
-Version: 0.0.1
+Version: 0.0.2
 Summary: This is a standalone Python library which contains code for  working with various AI library.
-Author-email: Francis Pradel <francis.pradel@faactopi.com>
+Author-email: Francis Pradel <francis.pradel@gmail.com>
+Maintainer-email: Francis Pradel <francis.pradel@gmail.com>
 License-Expression: LicenseRef-MIT
 Keywords: algorithm,EDA,AI,data
 Requires-Python: >=3.12
+Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: geopy
+Requires-Dist: numpy
 Requires-Dist: pandas
 Requires-Dist: plotly
-Requires-Dist: numpy
+Requires-Dist: plotly-express
 Requires-Dist: pydantic
+Requires-Dist: python-dotenv
+Requires-Dist: scikit-learn
 Requires-Dist: streamlit
 Provides-Extra: test
 Requires-Dist: pytest; extra == "test"
 Dynamic: license-file
+
+# Francis Pradel Intelligence Artifcielle (fpcia) Library
+
+This is a standalone Python library which contains code for working with various AI library such as :
+
+- scikit-learn
+- pytorch
+and also EDA library :
+- pandas
+and also visualisation
+- matplotlib
+- seaborn
+and also web UI
+- streamlit
+and web service deployement
+- fastapi
+It also contains utility functions for data preprocessing, model evaluation, and visualization.
+
+## Setup
+
+Python >=3.12
+
+- clone the repository
+
+```bash
+git clone 
+```
+
+- install the library
+
+```bash
+pip install .
+```
+
+- to run tests:
+
+```bash
+pip install pytest
+```
+
+```bash
+pytest
+```
