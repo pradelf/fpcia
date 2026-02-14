@@ -36,11 +36,11 @@ class MyPandaDataset(BaseModel):
     model_config = ConfigDict(str_max_length=10)
 
 
-def explode_date(df: pd.DataFrame, datename: str) -> pd.DataFrame:
+def explode_date(df: pd.DataFrame, datename: str, format="%d-%m-%Y") -> pd.DataFrame:
     """
     Expand a datetime column into separate columns for year, month, day, etc.
     """
-    df[datename] = pd.to_datetime(df[datename])
+    df[datename] = pd.to_datetime(df[datename], format=format)
     df["Year"] = df[datename].dt.year.astype("Int64")
     df["Month"] = df[datename].dt.month.astype("Int64")
     df["Day"] = df[datename].dt.day.astype("Int64")
