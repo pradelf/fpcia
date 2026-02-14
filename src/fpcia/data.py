@@ -48,3 +48,18 @@ def explode_date(df: pd.DataFrame, datename: str, format="%d-%m-%Y") -> pd.DataF
     df["Minute"] = df[datename].dt.minute.astype("Int64")
     df["second"] = df[datename].dt.second.astype("Int64")
     return df
+
+
+def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Remove duplicates from a DataFrame.
+    """
+    rs, cs = df.shape
+    df_model = df.drop_duplicates(inplace=False)
+    if df_model.shape == (rs, cs):
+        print("\n Pas de doublon dans le jeu de données")
+    else:
+        print(
+            f"\n Nombre de doublons retirés ou coorigé dans le jeu de données  ---> {rs - df_model.shape[0]}"
+        )
+    return df_model

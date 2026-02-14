@@ -13,4 +13,5 @@ __all__ = [
     "how_null_is_it",
     "score_model",
     "explode_date",
+    "remove_duplicates",
 ]
