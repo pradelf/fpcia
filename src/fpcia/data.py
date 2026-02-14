@@ -43,7 +43,7 @@ def explode_date(df: pd.DataFrame, datename: str, format="%d-%m-%Y") -> pd.DataF
     df[datename] = pd.to_datetime(df[datename], format=format)
     df["Year"] = df[datename].dt.year.astype("Int64")
     df["Month"] = df[datename].dt.month.astype("Int64")
-    df["Week"] = df[datename].dt.week.astype("Int64")
+    df["Week"] = df[datename].dt.isocalendar().week.astype("Int64")
     df["Day"] = df[datename].dt.day.astype("Int64")
     df["Hour"] = df[datename].dt.hour.astype("Int64")
     df["Minute"] = df[datename].dt.minute.astype("Int64")
