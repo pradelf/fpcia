@@ -275,10 +275,10 @@
 # df = pd.read_sql_query(con=engine.connect(), sql=stmt)
 
 # df.head()
-from sklearn.cluster import DBSCAN
 from geopy.distance import great_circle
-from shapely.geometry import MultiPoint
 from pandas import DataFrame
+from shapely.geometry import MultiPoint
+from sklearn.cluster import DBSCAN
 
 # Function for Expanding DateTime to separate columns taht can be used for other data
 

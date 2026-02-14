@@ -12,4 +12,5 @@ __all__ = [
     "inShape",
     "how_null_is_it",
     "score_model",
+    "explode_date",
 ]

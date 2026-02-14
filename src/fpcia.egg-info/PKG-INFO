@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: fpcia
-Version: 0.0.3
+Version: 0.0.4
 Summary: This is a standalone Python library which contains code for  working with various AI library.
 Author-email: Francis Pradel <francis.pradel@gmail.com>
 Maintainer-email: Francis Pradel <francis.pradel@gmail.com>
