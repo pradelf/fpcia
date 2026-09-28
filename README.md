@@ -1,4 +1,4 @@
-# Francis Pradel Consulting Intelligence Artifcielle (fpcia) Library
+# Francis Pradel Consulting Intelligence Artificielle (fpcia) Library
 
 This is a standalone Python library which contains code for working with various AI library such as :
 
