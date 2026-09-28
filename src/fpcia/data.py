@@ -48,7 +48,7 @@ def explode_date(df: pd.DataFrame, datename: str, format="%d-%m-%Y") -> pd.DataF
     df["Hour"] = df[datename].dt.hour.astype("Int64")
     df["Minute"] = df[datename].dt.minute.astype("Int64")
     df["second"] = df[datename].dt.second.astype("Int64")
-    df["DayOfWeek"] = df[datename].dt.dayofweek  # 0 = lundi, 6 = dimanche
+    df["DayOfWeek"] = df[datename].dt.dayofweek.astype("Int64")  # 0 = lundi, 6 = dimanche
     return df
 
 
