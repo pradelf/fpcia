@@ -40,7 +40,7 @@ def explode_date(df: pd.DataFrame, datename: str, format="%d-%m-%Y") -> pd.DataF
     """
     Expand a datetime column into separate columns for year, month, day, etc.
     """
-    df[datename] = pd.to_datetime(df[datename], format=format)
+    df[datename] = pd.to_datetime(df[datename], format=format, errors="coerce")
     df["Year"] = df[datename].dt.year.astype("Int64")
     df["Month"] = df[datename].dt.month.astype("Int64")
     df["Week"] = df[datename].dt.isocalendar().week.astype("Int64")
