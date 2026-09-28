@@ -1,4 +1,7 @@
 import pandas as pd
+import logging
+
+logger = logging.getLogger(__name__)
 from pydantic import BaseModel, ConfigDict
 
 
@@ -34,6 +37,31 @@ class MyPandaDataset(BaseModel):
         print("________________________________________________")
 
     model_config = ConfigDict(str_max_length=10)
+
+
+
+# Étape : suppression des outliers selon la règle des 3σ
+
+def remove_outliers(df: pd.DataFrame, outlier_cols: list = ["Temperature", "Fuel_Price", "CPI", "Unemployment"]) -> pd.DataFrame:
+    """
+    Remove outliers from the DataFrame based on the 3σ rule for specific columns.
+    """
+
+    logger.info("Nombre de lignes avant suppression des outliers :", len(df))
+
+    for col in outlier_cols:
+        mean = df[col].mean()
+        std = df[col].std()
+        lower_bound = mean - 3 * std
+        upper_bound = mean + 3 * std
+        before = len(df)
+        df = df[(df[col] >= lower_bound) & (df[col] <= upper_bound)]
+        after = len(df)
+        logger.info(f"Colonne {col} : lignes supprimées = {before - after}")
+
+    logger.info("Nombre de lignes après suppression des outliers :", len(df))
+    return df
+
 
 
 def explode_date(df: pd.DataFrame, datename: str, format="%d-%m-%Y") -> pd.DataFrame:
