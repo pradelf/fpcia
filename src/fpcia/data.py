@@ -47,7 +47,7 @@ def remove_outliers(df: pd.DataFrame, outlier_cols: list = ["Temperature", "Fuel
     Remove outliers from the DataFrame based on the 3σ rule for specific columns.
     """
 
-    logger.info("Nombre de lignes avant suppression des outliers :", len(df))
+    logger.info(f"Nombre de lignes avant suppression des outliers : {len(df)}")
 
     for col in outlier_cols:
         mean = df[col].mean()
@@ -59,7 +59,7 @@ def remove_outliers(df: pd.DataFrame, outlier_cols: list = ["Temperature", "Fuel
         after = len(df)
         logger.info(f"Colonne {col} : lignes supprimées = {before - after}")
 
-    logger.info("Nombre de lignes après suppression des outliers :", len(df))
+    logger.info(f"Nombre de lignes après suppression des outliers : {len(df)}")
     return df
 
 
