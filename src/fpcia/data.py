@@ -64,3 +64,31 @@ def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
             f"\n Nombre de doublons retirés ou coorigé dans le jeu de données  ---> {rs - df_model.shape[0]}"
         )
     return df_model
+
+
+def split_numeric_categorical(df: pd.DataFrame):
+    """
+    donne les colonnes numériques et celles catégorielles.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        DataFrame d'entrée
+
+    Returns
+    -------
+    numeric_cols : list
+        Liste des colonnes numériques
+    categorical_cols : list
+        Liste des colonnes catégorielles
+    """
+
+    # Colonnes numériques
+    numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
+
+    # Colonnes catégorielles (object + category)
+    categorical_cols = df.select_dtypes(
+        include=["object", "string", "category"]
+    ).columns.tolist()
+
+    return numeric_cols, categorical_cols

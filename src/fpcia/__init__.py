@@ -15,4 +15,5 @@ __all__ = [
     "score_model",
     "explode_date",
     "remove_duplicates",
+    "set_jedha_template",
 ]
