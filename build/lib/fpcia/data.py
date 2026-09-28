@@ -36,15 +36,60 @@ class MyPandaDataset(BaseModel):
     model_config = ConfigDict(str_max_length=10)
 
 
-def explode_date(df: pd.DataFrame, datename: str) -> pd.DataFrame:
+def explode_date(df: pd.DataFrame, datename: str, format="%d-%m-%Y") -> pd.DataFrame:
     """
     Expand a datetime column into separate columns for year, month, day, etc.
     """
-    df[datename] = pd.to_datetime(df[datename])
+    df[datename] = pd.to_datetime(df[datename], format=format)
     df["Year"] = df[datename].dt.year.astype("Int64")
     df["Month"] = df[datename].dt.month.astype("Int64")
+    df["Week"] = df[datename].dt.isocalendar().week.astype("Int64")
     df["Day"] = df[datename].dt.day.astype("Int64")
     df["Hour"] = df[datename].dt.hour.astype("Int64")
     df["Minute"] = df[datename].dt.minute.astype("Int64")
     df["second"] = df[datename].dt.second.astype("Int64")
+    df["DayOfWeek"] = df[datename].dt.dayofweek.astype("Int64")  # 0 = lundi, 6 = dimanche
     return df
+
+
+def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Remove duplicates from a DataFrame.
+    """
+    rs, cs = df.shape
+    df_model = df.drop_duplicates(inplace=False)
+    if df_model.shape == (rs, cs):
+        print("\n Pas de doublon dans le jeu de données")
+    else:
+        print(
+            f"\n Nombre de doublons retirés ou coorigé dans le jeu de données  ---> {rs - df_model.shape[0]}"
+        )
+    return df_model
+
+
+def split_numeric_categorical(df: pd.DataFrame):
+    """
+    donne les colonnes numériques et celles catégorielles.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        DataFrame d'entrée
+
+    Returns
+    -------
+    numeric_cols : list
+        Liste des colonnes numériques
+    categorical_cols : list
+        Liste des colonnes catégorielles
+    """
+
+    # Colonnes numériques
+    numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
+
+    # Colonnes catégorielles (object + category)
+    categorical_cols = df.select_dtypes(
+        include=["object", "string", "category"]
+    ).columns.tolist()
+
+    return numeric_cols, categorical_cols
