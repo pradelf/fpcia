@@ -16,5 +16,6 @@ __all__ = [
     "explode_date",
     "remove_outliers",
     "remove_duplicates",
+    "evaluate_regression_model",
     "set_jedha_template",
 ]
